@@ -27,7 +27,7 @@ router.post('/sqlinjection', async function(req,res,next){
 
 
     const usersQuery = {
-      text: 'SELECT * FROM users WHERE id = '+req.body.inputField
+      text: 'SELECT * FROM korisnici WHERE id = '+req.body.inputField
     }
 
     pool.query(usersQuery, (error, results) => {
@@ -62,7 +62,7 @@ router.post('/brokenauth', async function(req,res,next){
   }
 
     const usersQuery = {
-      text: 'INSERT INTO users (username, password) VALUES($1, $2)',
+      text: 'INSERT INTO korisnici (username, password) VALUES($1, $2)',
       values: [un,pass]
     }
 

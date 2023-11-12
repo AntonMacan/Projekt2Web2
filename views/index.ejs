@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drugi projekt</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin-top: 20px;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 300px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        .security-alert {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="text-4xl">Drugi projekt</h1>
+    <hr>
+
+    <h2 class="text-4xl">SQL Ubacivanje (Sql Injection)</h2>
+    <form action="/sqlinjection" method="post">
+        <label for="checkbox">Security:</label>
+        <input type="checkbox" id="checkbox" name="checkbox">
+        <br>
+        <label for="inputField">User id:</label>
+        <input type="text" id="inputField" name="inputField">
+        <br>
+
+        <% if(notgood == false){
+            if(si == true && sec == false){
+                rows.forEach(function(user) { %>
+                    <p>ID: <%= user.id %></p>
+                    <p>Username: <%= user.username %></p>
+                    <p>Password: <%= user.password %></p>
+                <% }); 
+            } else if(si == true && sec == true){
+                %> <p><%= rows%></p> <%
+            }
+        } else {
+            %> 
+            <p class="security-alert">ATTEMPT OF SQL INJECTION BUT SECURITY IS ON</p>
+            <%
+        }
+        %>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2 class="text-4xl">Loša autentifikacija (Broken Authentication)</h2>
+    <h3>REGISTRATION</h3>
+    <form action="/brokenauth" method="post">
+        <label for="checkbox">Security:</label>
+        <input type="checkbox" id="checkbox" name="checkbox">
+        <br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+
+        <% if(ba == true){
+            %> <p class="security-alert"> <%=text %> </p> <%
+        }
+        %>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
